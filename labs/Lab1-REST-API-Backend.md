@@ -22,9 +22,9 @@ Before starting this lab, ensure you have:
 
 - [ ] Git installed and configured
 - [ ] Node.js (v18+) or .NET SDK (8.0+) installed
-- [ ] A code editor (VS Code recommended)
+- [ ] **Visual Studio Code** installed
+- [ ] **GitHub Copilot** extension installed and activated in VS Code
 - [ ] Python 3.8+ with `uv` package manager (for Spec Kit CLI)
-- [ ] GitHub Copilot access
 
 ---
 
@@ -53,11 +53,8 @@ specify check
 Create a new Spec Kit project for the adventure game API:
 
 ```bash
-# Initialize with GitHub Copilot agent
+# Initialize with GitHub Copilot
 specify init adventure-api --ai copilot
-
-# Or with Claude if that's your AI assistant
-specify init adventure-api --ai claude
 
 # Navigate to your project
 cd adventure-api
@@ -69,6 +66,19 @@ This creates:
 - `memory/` directory for project context
 - `scripts/` directory with automation scripts
 - Agent-specific configuration files
+
+---
+
+## 💬 Using Spec Kit Commands in VS Code
+
+All `/speckit.*` commands are executed through the **GitHub Copilot Chat panel** in VS Code:
+
+1. **Open the Chat Panel**: Press `Ctrl+Shift+I` (Windows/Linux) or `Cmd+Shift+I` (Mac), or click the Copilot icon in the sidebar
+2. **Type the command**: Enter the `/speckit.*` command followed by your description
+3. **Press Enter**: Copilot will process the command and generate the appropriate files
+4. **Review the output**: Check the generated specifications and approve any file changes
+
+> **💡 Tip:** Make sure you have the project folder open in VS Code before running commands. The commands work on the current workspace.
 
 ---
 

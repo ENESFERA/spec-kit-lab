@@ -22,9 +22,10 @@ Before starting this lab, ensure you have:
 
 - [ ] Completed Lab 1 with a running REST API
 - [ ] Node.js (v18+) installed
+- [ ] **Visual Studio Code** installed
+- [ ] **GitHub Copilot** extension installed and activated in VS Code
 - [ ] The Spec Kit CLI installed (`specify version` to verify)
 - [ ] Your API endpoint URL available
-- [ ] GitHub Copilot access
 
 ---
 
@@ -33,7 +34,7 @@ Before starting this lab, ensure you have:
 Create a new Spec Kit project for the frontend:
 
 ```bash
-# Initialize with your preferred AI agent
+# Initialize with GitHub Copilot
 specify init adventure-frontend --ai copilot
 
 # Navigate to your project
@@ -42,6 +43,19 @@ cd adventure-frontend
 # Verify project structure
 ls -la
 ```
+
+---
+
+## 💬 Using Spec Kit Commands in VS Code
+
+All `/speckit.*` commands are executed through the **GitHub Copilot Chat panel** in VS Code:
+
+1. **Open the Chat Panel**: Press `Ctrl+Shift+I` (Windows/Linux) or `Cmd+Shift+I` (Mac), or click the Copilot icon in the sidebar
+2. **Type the command**: Enter the `/speckit.*` command followed by your description
+3. **Press Enter**: Copilot will process the command and generate the appropriate files
+4. **Review the output**: Check the generated specifications and approve any file changes
+
+> **💡 Tip:** Make sure you have the project folder open in VS Code before running commands. The commands work on the current workspace.
 
 ---
 

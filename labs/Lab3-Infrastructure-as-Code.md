@@ -24,8 +24,9 @@ Before starting this lab, ensure you have:
 - [ ] Azure account with an active subscription
 - [ ] Azure CLI installed (`az --version`)
 - [ ] Terraform installed (`terraform --version`)
+- [ ] **Visual Studio Code** installed
+- [ ] **GitHub Copilot** extension installed and activated in VS Code
 - [ ] The Spec Kit CLI installed
-- [ ] GitHub Copilot access
 
 ---
 
@@ -78,6 +79,19 @@ cd adventure-infra
 mkdir -p terraform/modules
 mkdir -p terraform/environments/{dev,prod}
 ```
+
+---
+
+## 💬 Using Spec Kit Commands in VS Code
+
+All `/speckit.*` commands are executed through the **GitHub Copilot Chat panel** in VS Code:
+
+1. **Open the Chat Panel**: Press `Ctrl+Shift+I` (Windows/Linux) or `Cmd+Shift+I` (Mac), or click the Copilot icon in the sidebar
+2. **Type the command**: Enter the `/speckit.*` command followed by your description
+3. **Press Enter**: Copilot will process the command and generate the appropriate files
+4. **Review the output**: Check the generated specifications and approve any file changes
+
+> **💡 Tip:** Make sure you have the project folder open in VS Code before running commands. The commands work on the current workspace.
 
 ---
 
