@@ -8,8 +8,7 @@
       "nodeGypDependencies": true
     },
     "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/astral-sh/uv/uv-installer:0": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
 
   "customizations": {
