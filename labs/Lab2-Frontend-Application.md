@@ -66,7 +66,6 @@ Define the guiding principles for your frontend:
 ```
 /speckit.constitution Create principles for a text adventure frontend:
 - Accessibility: Interface must be keyboard navigable and screen-reader friendly
-- Security: Never store sensitive tokens in localStorage; use httpOnly cookies or secure session management
 - Simplicity: Focus on functionality over visual complexity
 - Responsiveness: Interface must work on mobile and desktop
 - Error handling: All API errors must be displayed gracefully to users
@@ -90,30 +89,28 @@ For each feature, follow the complete Spec Kit workflow:
 
 ### 📋 Recommended Implementation Order
 
-| Order | Feature                 | Reason                          |
-| ----- | ----------------------- | ------------------------------- |
-| 1     | Authentication UI       | Required for all other features |
-| 2     | Adventure Dashboard     | Core navigation                 |
-| 3     | Character Management UI | Depends on adventures           |
-| 4     | Game Interface          | Main gameplay                   |
-| 5     | Inventory UI            | Enhances gameplay               |
-| 6     | Quest Log               | Complete experience             |
+| Order | Feature                 | Reason                |
+| ----- | ----------------------- | --------------------- |
+| 1     | Adventure Dashboard     | Core navigation       |
+| 2     | Character Management UI | Depends on adventures |
+| 3     | Game Interface          | Main gameplay         |
+| 4     | Inventory UI            | Enhances gameplay     |
+| 5     | Quest Log               | Complete experience   |
 
 ---
 
-### Feature 1: Authentication UI
+### Feature 1: Adventure Dashboard
 
 #### Step 3.1.1 - Specify
 
 ```
-/speckit.specify Build an authentication interface with:
-- Login form with username and password fields
-- Registration form for new users
-- Form validation with clear error messages
-- Secure token handling (store JWT securely)
-- Logout functionality
-- Protected routes that redirect to login when unauthenticated
-- Loading states during API calls
+/speckit.specify Build an adventure dashboard where users can:
+- View list of their existing adventures
+- Create a new adventure with a name
+- Select an adventure to continue playing
+- Delete an adventure with confirmation
+- Display adventure metadata (creation date, current scene, progress)
+- Show loading skeleton while fetching data
 ```
 
 #### Step 3.1.2 - Plan
@@ -121,19 +118,19 @@ For each feature, follow the complete Spec Kit workflow:
 **For React:**
 
 ```
-/speckit.plan Use React 18 with TypeScript. Use Vite for build tooling. Use React Router for navigation. Use TanStack Query (React Query) for API state management. Use Tailwind CSS for styling. Use Zustand for global state (auth tokens). Store API URL in environment variables.
+/speckit.plan Use React 18 with TypeScript. Use Vite for build tooling. Use React Router for navigation. Use TanStack Query (React Query) for API state management. Use Tailwind CSS for styling. Store API URL in environment variables. Create dashboard components with adventure list.
 ```
 
 **For Vue:**
 
 ```
-/speckit.plan Use Vue 3 with TypeScript and Composition API. Use Vite for build tooling. Use Vue Router for navigation. Use Pinia for state management. Use Tailwind CSS for styling. Store API URL in environment variables.
+/speckit.plan Use Vue 3 with TypeScript and Composition API. Use Vite for build tooling. Use Vue Router for navigation. Use Pinia for state management. Use Tailwind CSS for styling. Store API URL in environment variables. Create dashboard components with adventure list.
 ```
 
 **For Vanilla JavaScript:**
 
 ```
-/speckit.plan Use vanilla HTML, CSS, and JavaScript. Use Vite for build tooling. Use native fetch API for HTTP requests. Use CSS custom properties for theming. Create modular JavaScript with ES modules. Store API URL in environment variables.
+/speckit.plan Use vanilla HTML, CSS, and JavaScript. Use Vite for build tooling. Use native fetch API for HTTP requests. Use CSS custom properties for theming. Create modular JavaScript with ES modules. Store API URL in environment variables. Create dashboard components with adventure list.
 ```
 
 #### Step 3.1.3 - Tasks
@@ -148,34 +145,34 @@ For each feature, follow the complete Spec Kit workflow:
 /speckit.implement
 ```
 
-#### ✅ Checkpoint: Verify Authentication UI
+#### ✅ Checkpoint: Verify Adventure Dashboard
 
-- [ ] Login form displays and validates input
-- [ ] Registration form creates new user
-- [ ] Token is stored securely after login
-- [ ] Protected routes redirect to login
-- [ ] Logout clears session
+- [ ] Adventures list loads from API
+- [ ] Can create new adventure
+- [ ] Can select adventure to play
+- [ ] Delete shows confirmation
 
 ---
 
-### Feature 2: Adventure Dashboard
+### Feature 2: Character Management UI
 
 #### Step 3.2.1 - Specify
 
 ```
-/speckit.specify Build an adventure dashboard where users can:
-- View list of their existing adventures
-- Create a new adventure with a name
-- Select an adventure to continue playing
-- Delete an adventure with confirmation
-- Display adventure metadata (creation date, current scene, progress)
-- Show loading skeleton while fetching data
+/speckit.specify Build a character management interface:
+- Character creation form with name input
+- Attribute allocation system (STR, DEX, INT, CON, CHA)
+- Point-buy or dice roll options for attributes
+- Display calculated modifiers next to each attribute
+- Character sheet view showing all stats
+- Edit character functionality
+- Character selection for adventures
 ```
 
 #### Step 3.2.2 - Plan
 
 ```
-/speckit.plan Continue with the existing tech stack. Create dashboard components with adventure list. Implement CRUD operations through API hooks/composables. Add confirmation modal for delete. Create loading skeletons.
+/speckit.plan Continue with the existing tech stack. Create character form with attribute inputs. Implement modifier calculation display. Add dice roll integration for stat generation. Create character sheet component.
 ```
 
 #### Step 3.2.3 - Tasks
@@ -190,34 +187,34 @@ For each feature, follow the complete Spec Kit workflow:
 /speckit.implement
 ```
 
-#### ✅ Checkpoint: Verify Adventure Dashboard
+#### ✅ Checkpoint: Verify Character Management
 
-- [ ] Adventures list loads from API
-- [ ] Can create new adventure
-- [ ] Can select adventure to play
-- [ ] Delete shows confirmation
+- [ ] Character creation form works
+- [ ] Attributes can be allocated
+- [ ] Modifiers display correctly
+- [ ] Character sheet shows all stats
 
 ---
 
-### Feature 3: Character Management UI
+### Feature 3: Game Interface
 
 #### Step 3.3.1 - Specify
 
 ```
-/speckit.specify Build a character management interface:
-- Character creation form with name input
-- Attribute allocation system (STR, DEX, INT, CON, CHA)
-- Point-buy or dice roll options for attributes
-- Display calculated modifiers next to each attribute
-- Character sheet view showing all stats
-- Edit character functionality
-- Character selection for adventures
+/speckit.specify Build the main text adventure game interface:
+- Narrative text display area with scrollable history
+- Player input field for commands/choices
+- Current scene description display
+- Character status panel (HP, conditions, equipped items)
+- Action buttons for common actions (attack, flee, use item)
+- Combat mode with turn indicators
+- Dice roll results display with animation
 ```
 
 #### Step 3.3.2 - Plan
 
 ```
-/speckit.plan Continue with the existing tech stack. Create character form with attribute inputs. Implement modifier calculation display. Add dice roll integration for stat generation. Create character sheet component.
+/speckit.plan Continue with the existing tech stack. Create game screen with narrative display. Implement command input with history. Add character status sidebar. Create combat UI with turn indicator. Add dice roll animation component.
 ```
 
 #### Step 3.3.3 - Tasks
@@ -232,34 +229,34 @@ For each feature, follow the complete Spec Kit workflow:
 /speckit.implement
 ```
 
-#### ✅ Checkpoint: Verify Character Management
+#### ✅ Checkpoint: Verify Game Interface
 
-- [ ] Character creation form works
-- [ ] Attributes can be allocated
-- [ ] Modifiers display correctly
-- [ ] Character sheet shows all stats
+- [ ] Narrative text displays and scrolls
+- [ ] Commands can be entered
+- [ ] Character status shows correctly
+- [ ] Combat mode works
 
 ---
 
-### Feature 4: Game Interface
+### Feature 4: Inventory UI
 
 #### Step 3.4.1 - Specify
 
 ```
-/speckit.specify Build the main text adventure game interface:
-- Narrative text display area with scrollable history
-- Player input field for commands/choices
-- Current scene description display
-- Character status panel (HP, conditions, equipped items)
-- Action buttons for common actions (attack, flee, use item)
-- Combat mode with turn indicators
-- Dice roll results display with animation
+/speckit.specify Build an inventory management interface:
+- Grid or list view of inventory items
+- Item details on hover/click
+- Drag-and-drop or button-based equip/unequip
+- Stack quantity display for stackable items
+- Equipment slots visualization
+- Use item functionality
+- Sort and filter options
 ```
 
 #### Step 3.4.2 - Plan
 
 ```
-/speckit.plan Continue with the existing tech stack. Create game screen with narrative display. Implement command input with history. Add character status sidebar. Create combat UI with turn indicator. Add dice roll animation component.
+/speckit.plan Continue with the existing tech stack. Create inventory grid component. Implement item detail modal/tooltip. Add equipment slot visualization. Create equip/unequip functionality.
 ```
 
 #### Step 3.4.3 - Tasks
@@ -274,48 +271,6 @@ For each feature, follow the complete Spec Kit workflow:
 /speckit.implement
 ```
 
-#### ✅ Checkpoint: Verify Game Interface
-
-- [ ] Narrative text displays and scrolls
-- [ ] Commands can be entered
-- [ ] Character status shows correctly
-- [ ] Combat mode works
-
----
-
-### Feature 5: Inventory UI
-
-#### Step 3.5.1 - Specify
-
-```
-/speckit.specify Build an inventory management interface:
-- Grid or list view of inventory items
-- Item details on hover/click
-- Drag-and-drop or button-based equip/unequip
-- Stack quantity display for stackable items
-- Equipment slots visualization
-- Use item functionality
-- Sort and filter options
-```
-
-#### Step 3.5.2 - Plan
-
-```
-/speckit.plan Continue with the existing tech stack. Create inventory grid component. Implement item detail modal/tooltip. Add equipment slot visualization. Create equip/unequip functionality.
-```
-
-#### Step 3.5.3 - Tasks
-
-```
-/speckit.tasks
-```
-
-#### Step 3.5.4 - Implement
-
-```
-/speckit.implement
-```
-
 #### ✅ Checkpoint: Verify Inventory UI
 
 - [ ] Items display in grid/list
@@ -325,9 +280,9 @@ For each feature, follow the complete Spec Kit workflow:
 
 ---
 
-### Feature 6: Quest Log
+### Feature 5: Quest Log
 
-#### Step 3.6.1 - Specify
+#### Step 3.5.1 - Specify
 
 ```
 /speckit.specify Build a quest tracking interface:
@@ -339,19 +294,19 @@ For each feature, follow the complete Spec Kit workflow:
 - Filter by quest status (active, completed, failed)
 ```
 
-#### Step 3.6.2 - Plan
+#### Step 3.5.2 - Plan
 
 ```
 /speckit.plan Continue with the existing tech stack. Create quest list component with filters. Implement quest detail view. Add progress indicators. Create completed quests section.
 ```
 
-#### Step 3.6.3 - Tasks
+#### Step 3.5.3 - Tasks
 
 ```
 /speckit.tasks
 ```
 
-#### Step 3.6.4 - Implement
+#### Step 3.5.4 - Implement
 
 ```
 /speckit.implement
@@ -397,41 +352,30 @@ npm run dev
 
 ---
 
-## Step 5: Security Checklist
+## Step 5: Quality Checklist
 
 Ensure your frontend implements:
-
-- [ ] **Token Security**
-  - [ ] Tokens not stored in localStorage (if possible)
-  - [ ] Tokens cleared on logout
-  - [ ] Automatic redirect on 401 responses
 
 - [ ] **Input Validation**
   - [ ] Client-side form validation
   - [ ] Sanitized user input display
   - [ ] XSS prevention
 
-- [ ] **Secure Communication**
-  - [ ] HTTPS in production
-  - [ ] CORS properly configured
-  - [ ] No sensitive data in URLs
-
 - [ ] **Error Handling**
-  - [ ] API errors don't expose sensitive info
+  - [ ] API errors handled gracefully
   - [ ] Graceful degradation
   - [ ] User-friendly error messages
+
+- [ ] **Performance**
+  - [ ] Loading states during API calls
+  - [ ] Efficient re-renders
+  - [ ] Responsive design
 
 ---
 
 ## Minimum Functional Requirements Checklist
 
 Ensure your frontend implements:
-
-- [ ] **Authentication**
-  - [ ] Login form
-  - [ ] Registration form
-  - [ ] Logout functionality
-  - [ ] Protected routes
 
 - [ ] **Adventure Management**
   - [ ] List adventures
@@ -503,19 +447,18 @@ Here's what a typical interaction might look like:
 
 Your implementation will be evaluated on:
 
-| Criteria                | Weight |
-| ----------------------- | ------ |
-| API Integration         | 25%    |
-| Security Implementation | 25%    |
-| Code Documentation      | 20%    |
-| User Experience         | 15%    |
-| Code Quality            | 15%    |
+| Criteria           | Weight |
+| ------------------ | ------ |
+| API Integration    | 30%    |
+| Code Documentation | 25%    |
+| User Experience    | 25%    |
+| Code Quality       | 20%    |
 
 ---
 
 ## Tips for Success
 
-1. **Start with Authentication** - Get login/logout working first
+1. **Start with the Dashboard** - Get the adventure list working first
 2. **Use API Types** - Generate TypeScript types from your OpenAPI spec
 3. **Handle Loading States** - Show spinners during API calls
 4. **Test Error Cases** - What happens when the API is down?

@@ -23,7 +23,6 @@ Welcome to the Text Adventure Game development challenge! These labs guide you t
 - **Languages:** C# or TypeScript
 - **Specification:** OpenAPI 3.0.1 (Swagger)
 - **Database:** PostgreSQL
-- **Auth:** JWT tokens
 
 ### Lab 2: Frontend
 
@@ -62,27 +61,25 @@ specify init my-project --ai copilot
 
 | Criteria                      | Weight |
 | ----------------------------- | ------ |
-| Text Adventure Enjoyability   | 20%    |
-| Security Implementation       | 25%    |
-| API Documentation (OpenAPI)   | 20%    |
-| Best Practices & Code Quality | 20%    |
-| Test Coverage                 | 15%    |
+| Text Adventure Enjoyability   | 25%    |
+| API Documentation (OpenAPI)   | 25%    |
+| Best Practices & Code Quality | 30%    |
+| Test Coverage                 | 20%    |
 
 ### Lab 2: Frontend Application
 
-| Criteria                | Weight |
-| ----------------------- | ------ |
-| API Integration         | 25%    |
-| Security Implementation | 25%    |
-| Code Documentation      | 20%    |
-| User Experience         | 15%    |
-| Code Quality            | 15%    |
+| Criteria           | Weight |
+| ------------------ | ------ |
+| API Integration    | 30%    |
+| Code Documentation | 25%    |
+| User Experience    | 25%    |
+| Code Quality       | 20%    |
 
 ### Lab 3: Infrastructure as Code
 
 | Criteria                             | Weight |
 | ------------------------------------ | ------ |
-| Security Implementation              | 30%    |
+| Infrastructure Security              | 30%    |
 | Documentation Quality                | 25%    |
 | Best Practices (Modules, State, DRY) | 25%    |
 | Successful Deployment                | 20%    |

@@ -88,7 +88,6 @@ Define the guiding principles for your API:
 
 ```
 /speckit.constitution Create principles for a text adventure game REST API:
-- Security first: All endpoints must be authenticated
 - RESTful design: Follow REST conventions strictly
 - Documentation clarity: Every endpoint must be documented in OpenAPI 3.0.1
 - Testability: Every feature must have unit tests
@@ -115,27 +114,26 @@ For each feature, follow the complete Spec Kit workflow:
 
 | Order | Feature              | Reason                          |
 | ----- | -------------------- | ------------------------------- |
-| 1     | Authentication       | Required for all other features |
-| 2     | Dice System          | Foundation for combat mechanics |
-| 3     | Adventure System     | Core game structure             |
-| 4     | Character Management | Depends on adventures           |
-| 5     | Inventory System     | Depends on characters           |
-| 6     | Combat System        | Depends on dice, characters     |
-| 7     | Quest System         | Depends on all previous         |
+| 1     | Dice System          | Foundation for combat mechanics |
+| 2     | Adventure System     | Core game structure             |
+| 3     | Character Management | Depends on adventures           |
+| 4     | Inventory System     | Depends on characters           |
+| 5     | Combat System        | Depends on dice, characters     |
+| 6     | Quest System         | Depends on all previous         |
 
 ---
 
-### Feature 1: Authentication System
+### Feature 1: Dice System
 
 #### Step 4.1.1 - Specify
 
 ```
-/speckit.specify Build a security system with:
-- JWT token-based authentication
-- User registration and login endpoints
-- Token refresh mechanism
-- Role-based permissions (player, game master, admin)
-- Rate limiting for API protection
+/speckit.specify Build a dice rolling engine that supports:
+- Standard dice notation (e.g., 2d6, 1d20+5, 3d8-2)
+- Parsing expressions like "2d6+1d4+3"
+- Return individual rolls and total
+- Support for advantage/disadvantage (roll twice, take higher/lower)
+- Cryptographically secure random number generation
 ```
 
 #### Step 4.1.2 - Plan
@@ -143,13 +141,13 @@ For each feature, follow the complete Spec Kit workflow:
 **For TypeScript:**
 
 ```
-/speckit.plan Use TypeScript with Express.js framework. Use Prisma ORM with PostgreSQL database. Use Jest for unit testing. Implement JWT authentication with jsonwebtoken library. Structure code with controllers, services, and repositories pattern.
+/speckit.plan Use TypeScript with Express.js framework. Use Prisma ORM with PostgreSQL database. Use Jest for unit testing. Structure code with controllers, services, and repositories pattern. Create a DiceService with parser and roller. Implement regex-based expression parsing. Use crypto library for secure random.
 ```
 
 **For C#:**
 
 ```
-/speckit.plan Use C# with ASP.NET Core 8 Web API. Use Entity Framework Core with PostgreSQL database. Use xUnit for unit testing. Implement JWT authentication with Microsoft.AspNetCore.Authentication.JwtBearer. Follow Clean Architecture pattern.
+/speckit.plan Use C# with ASP.NET Core 8 Web API. Use Entity Framework Core with PostgreSQL database. Use xUnit for unit testing. Follow Clean Architecture pattern. Create a DiceService with parser and roller. Implement regex-based expression parsing.
 ```
 
 #### Step 4.1.3 - Tasks
@@ -164,39 +162,29 @@ For each feature, follow the complete Spec Kit workflow:
 /speckit.implement
 ```
 
-#### ✅ Checkpoint: Verify Authentication
+#### ✅ Checkpoint: Verify Dice System
 
 ```bash
-# Test registration
-curl -X POST http://localhost:3000/api/auth/register \
+# Test dice roll
+curl -X POST http://localhost:3000/api/dice/roll \
   -H "Content-Type: application/json" \
-  -d '{"username": "adventurer", "password": "quest123"}'
-
-# Test login
-curl -X POST http://localhost:3000/api/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{"username": "adventurer", "password": "quest123"}'
+  -d '{"expression": "2d6+3"}'
 ```
 
 ---
 
-### Feature 2: Dice System
+### Feature 2: Adventure System
 
 #### Step 4.2.1 - Specify
 
 ```
-/speckit.specify Build a dice rolling engine that supports:
-- Standard dice notation (e.g., 2d6, 1d20+5, 3d8-2)
-- Parsing expressions like "2d6+1d4+3"
-- Return individual rolls and total
-- Support for advantage/disadvantage (roll twice, take higher/lower)
-- Cryptographically secure random number generation
+/speckit.specify Build an adventure initialization system where users can start a new text adventure. Each adventure has a unique ID, creation timestamp, current scene, and game state. Users should be able to create, retrieve, update, and delete adventures.
 ```
 
 #### Step 4.2.2 - Plan
 
 ```
-/speckit.plan Continue with the existing tech stack. Create a DiceService with parser and roller. Implement regex-based expression parsing. Use crypto library for secure random. Create comprehensive unit tests for all dice expressions.
+/speckit.plan Continue with the existing tech stack. Create Adventure entity with relationships. Implement CRUD operations. Add scene management and game state persistence. Generate OpenAPI documentation for all endpoints.
 ```
 
 #### Step 4.2.3 - Tasks
@@ -211,30 +199,37 @@ curl -X POST http://localhost:3000/api/auth/login \
 /speckit.implement
 ```
 
-#### ✅ Checkpoint: Verify Dice System
+#### ✅ Checkpoint: Verify Adventure System
 
 ```bash
-# Test dice roll (requires auth token)
-curl -X POST http://localhost:3000/api/dice/roll \
+# Create adventure
+curl -X POST http://localhost:3000/api/adventures \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <your-token>" \
-  -d '{"expression": "2d6+3"}'
+  -d '{"name": "The Dark Cave"}'
+
+# List adventures
+curl -X GET http://localhost:3000/api/adventures
 ```
 
 ---
 
-### Feature 3: Adventure System
+### Feature 3: Character Management
 
 #### Step 4.3.1 - Specify
 
 ```
-/speckit.specify Build an adventure initialization system where users can start a new text adventure. Each adventure has a unique ID, creation timestamp, current scene, and game state. Users should be able to create, retrieve, update, and delete adventures. Include JWT authentication for all operations.
+/speckit.specify Build a character management system with the following:
+- Create, edit, retrieve characters
+- Attributes: STR (Strength), DEX (Dexterity), INT (Intelligence), CON (Constitution), CHA (Charisma)
+- Each attribute has a base value (3-18) and calculated modifier ((value - 10) / 2)
+- Character snapshots and versioning for game saves
+- Character belongs to an adventure
 ```
 
 #### Step 4.3.2 - Plan
 
 ```
-/speckit.plan Continue with the existing tech stack. Create Adventure entity with relationships. Implement CRUD operations with proper authorization. Add scene management and game state persistence. Generate OpenAPI documentation for all endpoints.
+/speckit.plan Continue with the existing tech stack. Create Character entity linked to Adventure. Implement attribute system with automatic modifier calculation. Add snapshot/versioning system for character history. Create unit tests for modifier calculations.
 ```
 
 #### Step 4.3.3 - Tasks
@@ -249,39 +244,34 @@ curl -X POST http://localhost:3000/api/dice/roll \
 /speckit.implement
 ```
 
-#### ✅ Checkpoint: Verify Adventure System
+#### ✅ Checkpoint: Verify Character System
 
 ```bash
-# Create adventure
-curl -X POST http://localhost:3000/api/adventures \
+# Create character
+curl -X POST http://localhost:3000/api/adventures/{adventureId}/characters \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <your-token>" \
-  -d '{"name": "The Dark Cave"}'
-
-# List adventures
-curl -X GET http://localhost:3000/api/adventures \
-  -H "Authorization: Bearer <your-token>"
+  -d '{"name": "Aldric", "str": 16, "dex": 14, "int": 10, "con": 15, "cha": 12}'
 ```
 
 ---
 
-### Feature 4: Character Management
+### Feature 4: Inventory System
 
 #### Step 4.4.1 - Specify
 
 ```
-/speckit.specify Build a character management system with the following:
-- Create, edit, retrieve characters
-- Attributes: STR (Strength), DEX (Dexterity), INT (Intelligence), CON (Constitution), CHA (Charisma)
-- Each attribute has a base value (3-18) and calculated modifier ((value - 10) / 2)
-- Character snapshots and versioning for game saves
-- Character belongs to an adventure
+/speckit.specify Build an inventory management system:
+- Items can be stackable (potions, arrows) or unique (weapons, armor)
+- Items can be equipped or stored
+- Equipment slots: head, chest, hands, legs, feet, main hand, off hand
+- Loot tables for random item generation
+- Item effects and modifiers
 ```
 
 #### Step 4.4.2 - Plan
 
 ```
-/speckit.plan Continue with the existing tech stack. Create Character entity linked to Adventure. Implement attribute system with automatic modifier calculation. Add snapshot/versioning system for character history. Create unit tests for modifier calculations.
+/speckit.plan Continue with the existing tech stack. Create Item and Inventory entities. Implement equipment slot system. Create loot table with weighted random selection using dice system. Add item effect modifiers to character stats.
 ```
 
 #### Step 4.4.3 - Tasks
@@ -296,35 +286,40 @@ curl -X GET http://localhost:3000/api/adventures \
 /speckit.implement
 ```
 
-#### ✅ Checkpoint: Verify Character System
+#### ✅ Checkpoint: Verify Inventory System
 
 ```bash
-# Create character
-curl -X POST http://localhost:3000/api/adventures/{adventureId}/characters \
+# Add item to inventory
+curl -X POST http://localhost:3000/api/characters/{characterId}/inventory \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <your-token>" \
-  -d '{"name": "Aldric", "str": 16, "dex": 14, "int": 10, "con": 15, "cha": 12}'
+  -d '{"itemId": "sword-01", "quantity": 1}'
+
+# Equip item
+curl -X POST http://localhost:3000/api/characters/{characterId}/equip \
+  -H "Content-Type: application/json" \
+  -d '{"itemId": "sword-01", "slot": "main_hand"}'
 ```
 
 ---
 
-### Feature 5: Inventory System
+### Feature 5: Combat System
 
 #### Step 4.5.1 - Specify
 
 ```
-/speckit.specify Build an inventory management system:
-- Items can be stackable (potions, arrows) or unique (weapons, armor)
-- Items can be equipped or stored
-- Equipment slots: head, chest, hands, legs, feet, main hand, off hand
-- Loot tables for random item generation
-- Item effects and modifiers
+/speckit.specify Build a turn-based combat system with:
+- NPCs/enemies with stats and behaviors
+- AI states: aggressive, defensive, flee
+- Turn resolution using the dice engine
+- Initiative order based on DEX modifier + d20
+- Attack rolls vs armor class
+- Damage calculation with weapon dice
 ```
 
 #### Step 4.5.2 - Plan
 
 ```
-/speckit.plan Continue with the existing tech stack. Create Item and Inventory entities. Implement equipment slot system. Create loot table with weighted random selection using dice system. Add item effect modifiers to character stats.
+/speckit.plan Continue with the existing tech stack. Create NPC/Enemy entities with AI state machine. Implement initiative system using dice service. Create combat resolver with attack rolls and damage calculation. Add unit tests for combat scenarios.
 ```
 
 #### Step 4.5.3 - Tasks
@@ -339,42 +334,40 @@ curl -X POST http://localhost:3000/api/adventures/{adventureId}/characters \
 /speckit.implement
 ```
 
-#### ✅ Checkpoint: Verify Inventory System
+#### ✅ Checkpoint: Verify Combat System
 
 ```bash
-# Add item to inventory
-curl -X POST http://localhost:3000/api/characters/{characterId}/inventory \
+# Start combat
+curl -X POST http://localhost:3000/api/adventures/{adventureId}/combat/start \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <your-token>" \
-  -d '{"itemId": "sword-01", "quantity": 1}'
+  -d '{"enemies": ["goblin-01", "goblin-02"]}'
 
-# Equip item
-curl -X POST http://localhost:3000/api/characters/{characterId}/equip \
+# Execute turn
+curl -X POST http://localhost:3000/api/adventures/{adventureId}/combat/turn \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <your-token>" \
-  -d '{"itemId": "sword-01", "slot": "main_hand"}'
+  -d '{"action": "attack", "targetId": "goblin-01"}'
 ```
 
 ---
 
-### Feature 6: Combat System
+### Feature 6: Quest System
 
 #### Step 4.6.1 - Specify
 
 ```
-/speckit.specify Build a turn-based combat system with:
-- NPCs/enemies with stats and behaviors
-- AI states: aggressive, defensive, flee
-- Turn resolution using the dice engine
-- Initiative order based on DEX modifier + d20
-- Attack rolls vs armor class
-- Damage calculation with weapon dice
+/speckit.specify Build a multi-stage quest system:
+- Quests with multiple objectives/stages
+- Progress tracking per stage
+- Success and failure conditions
+- Quest state persistence
+- Rewards on completion
+- Quest dependencies (prerequisite quests)
 ```
 
 #### Step 4.6.2 - Plan
 
 ```
-/speckit.plan Continue with the existing tech stack. Create NPC/Enemy entities with AI state machine. Implement initiative system using dice service. Create combat resolver with attack rolls and damage calculation. Add unit tests for combat scenarios.
+/speckit.plan Continue with the existing tech stack. Create Quest and QuestStage entities. Implement progress tracking system. Add condition evaluation for success/failure. Integrate with inventory for rewards. Create quest dependency graph.
 ```
 
 #### Step 4.6.3 - Tasks
@@ -389,66 +382,14 @@ curl -X POST http://localhost:3000/api/characters/{characterId}/equip \
 /speckit.implement
 ```
 
-#### ✅ Checkpoint: Verify Combat System
-
-```bash
-# Start combat
-curl -X POST http://localhost:3000/api/adventures/{adventureId}/combat/start \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <your-token>" \
-  -d '{"enemies": ["goblin-01", "goblin-02"]}'
-
-# Execute turn
-curl -X POST http://localhost:3000/api/adventures/{adventureId}/combat/turn \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <your-token>" \
-  -d '{"action": "attack", "targetId": "goblin-01"}'
-```
-
----
-
-### Feature 7: Quest System
-
-#### Step 4.7.1 - Specify
-
-```
-/speckit.specify Build a multi-stage quest system:
-- Quests with multiple objectives/stages
-- Progress tracking per stage
-- Success and failure conditions
-- Quest state persistence
-- Rewards on completion
-- Quest dependencies (prerequisite quests)
-```
-
-#### Step 4.7.2 - Plan
-
-```
-/speckit.plan Continue with the existing tech stack. Create Quest and QuestStage entities. Implement progress tracking system. Add condition evaluation for success/failure. Integrate with inventory for rewards. Create quest dependency graph.
-```
-
-#### Step 4.7.3 - Tasks
-
-```
-/speckit.tasks
-```
-
-#### Step 4.7.4 - Implement
-
-```
-/speckit.implement
-```
-
 #### ✅ Checkpoint: Verify Quest System
 
 ```bash
 # Get available quests
-curl -X GET http://localhost:3000/api/adventures/{adventureId}/quests \
-  -H "Authorization: Bearer <your-token>"
+curl -X GET http://localhost:3000/api/adventures/{adventureId}/quests
 
 # Accept quest
-curl -X POST http://localhost:3000/api/adventures/{adventureId}/quests/{questId}/accept \
-  -H "Authorization: Bearer <your-token>"
+curl -X POST http://localhost:3000/api/adventures/{adventureId}/quests/{questId}/accept
 ```
 
 ---
@@ -486,7 +427,6 @@ Ensure your `openapi.yaml` or `openapi.json` file:
 - Uses version 3.0.1
 - Documents all endpoints
 - Includes request/response schemas
-- Has authentication requirements defined
 
 ### Test API Endpoints
 
@@ -496,9 +436,9 @@ npm run dev  # TypeScript
 dotnet run   # C#
 
 # Test with curl or use the Swagger UI
-curl -X POST http://localhost:3000/api/auth/register \
+curl -X POST http://localhost:3000/api/dice/roll \
   -H "Content-Type: application/json" \
-  -d '{"username": "adventurer", "password": "quest123"}'
+  -d '{"expression": "2d6+3"}'
 ```
 
 ---
@@ -541,11 +481,6 @@ Ensure your API implements:
   - [ ] Success/failure conditions
   - [ ] State persistence
 
-- [ ] **Security**
-  - [ ] JWT authentication
-  - [ ] Basic authorization
-  - [ ] Protected endpoints
-
 - [ ] **Documentation**
   - [ ] OpenAPI 3.0.1 specification
   - [ ] All endpoints documented
@@ -559,11 +494,10 @@ Your implementation will be evaluated on:
 
 | Criteria                      | Weight |
 | ----------------------------- | ------ |
-| Text Adventure Enjoyability   | 20%    |
-| Security Implementation       | 25%    |
-| API Documentation (OpenAPI)   | 20%    |
-| Best Practices & Code Quality | 20%    |
-| Test Coverage                 | 15%    |
+| Text Adventure Enjoyability   | 25%    |
+| API Documentation (OpenAPI)   | 25%    |
+| Best Practices & Code Quality | 30%    |
+| Test Coverage                 | 20%    |
 
 ---
 
@@ -572,8 +506,7 @@ Your implementation will be evaluated on:
 1. **Start with the Dice Engine** - It's foundational for combat
 2. **Design your OpenAPI spec early** - Let it guide implementation
 3. **Test as you go** - Don't leave testing until the end
-4. **Keep security simple** - Basic JWT is sufficient
-5. **Document clearly** - Good API docs help everyone
+4. **Document clearly** - Good API docs help everyone
 
 ---
 
@@ -581,7 +514,6 @@ Your implementation will be evaluated on:
 
 - [GitHub Spec Kit Documentation](https://speckit.org/)
 - [OpenAPI 3.0.1 Specification](https://swagger.io/specification/)
-- [JWT Introduction](https://jwt.io/introduction/)
 - [REST API Best Practices](https://restfulapi.net/)
 
 ---
