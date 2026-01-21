@@ -4,10 +4,6 @@
       "command": "npx",
       "args": ["-y", "@upstash/context7-mcp@latest"]
     },
-    "sequentialthinking": {
-      "command": "docker",
-      "args": ["run", "--rm", "-i", "mcp/sequentialthinking"]
-    },
     "playwright": {
       "command": "npx",
       "args": ["@playwright/mcp@latest"]

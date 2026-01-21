@@ -1,4 +1,5 @@
 # spec-kit-lab
+
 An introductory laboratory to know how to use GitHub Spec Kit
 
 ## About This Lab
@@ -21,14 +22,30 @@ Whether you're using GitHub Codespaces or running the devcontainer locally, Spec
 
 This project uses a development container (devcontainer) to provide a consistent development environment. You can use it locally with Docker or in the cloud with GitHub Codespaces.
 
+### Step 1: Fork the Repository
+
+Before you begin, fork this repository to your own GitHub account:
+
+1. **Navigate to the repository:**
+   - Go to [https://github.com/ENESFERA/spec-kit-lab](https://github.com/ENESFERA/spec-kit-lab)
+
+2. **Fork the repository:**
+   - Click the **"Fork"** button in the top-right corner of the page
+   - Select your GitHub account as the destination
+   - Wait for the fork to complete
+
+3. **Work from your fork:**
+   - All subsequent steps should be performed on your forked repository
+   - This allows you to make changes and push commits without affecting the original repository
+
 ## Option 1: Using GitHub Codespaces (Recommended)
 
 GitHub Codespaces provides a cloud-based development environment with no local setup required.
 
 ### Steps to Start with Codespaces
 
-1. **Navigate to the repository:**
-   - Go to [https://github.com/ENESFERA/spec-kit-lab](https://github.com/ENESFERA/spec-kit-lab)
+1. **Navigate to your forked repository:**
+   - Go to `https://github.com/YOUR-USERNAME/spec-kit-lab` (replace `YOUR-USERNAME` with your GitHub username)
 
 2. **Create a new Codespace:**
    - Click the green **"Code"** button
@@ -63,13 +80,15 @@ GitHub Codespaces provides a cloud-based development environment with no local s
 
 ### Starting the Devcontainer
 
-1. **Clone the repository:**
+1. **Clone your forked repository:**
+
    ```bash
-   git clone https://github.com/ENESFERA/spec-kit-lab.git
+   git clone https://github.com/YOUR-USERNAME/spec-kit-lab.git
    cd spec-kit-lab
    ```
 
 2. **Open in VS Code:**
+
    ```bash
    code .
    ```
@@ -91,6 +110,7 @@ GitHub Codespaces provides a cloud-based development environment with no local s
 ### Available Tools
 
 The devcontainer includes the following command-line tools:
+
 - Package management: `apt`, `dpkg`
 - Container tools: `docker`
 - Version control: `git`, `gh` (GitHub CLI)
@@ -153,6 +173,7 @@ The following MCP servers are configured and ready to use:
 ### How It Works
 
 When you use GitHub Copilot in this workspace, it can automatically access these MCP servers to:
+
 - Fetch real-time documentation
 - Automate browser interactions
 - Access GitHub data
