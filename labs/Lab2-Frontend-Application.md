@@ -101,6 +101,12 @@ For each feature, follow the complete Spec Kit workflow:
 
 ### Feature 1: Adventure Dashboard
 
+> **⚠️ Before starting:** Make sure you're on the main branch with latest changes:
+>
+> ```bash
+> git checkout main && git pull
+> ```
+
 #### Step 3.1.1 - Specify
 
 ```
@@ -183,7 +189,9 @@ Open http://localhost:5173 in your browser and verify:
 3. Click `+` next to each file (or `+` on "Changes" header to stage all)
 4. Enter commit message: `feat: implement adventure dashboard`
 5. Click **Commit** button (checkmark icon)
-6. Click **Sync Changes** or **Push** in the status bar
+6. Click **Sync Changes** to push to the current branch
+7. Click **Create Pull Request** in the Source Control panel (or use GitHub extension)
+8. Review and merge the PR on GitHub, then pull main locally
 
 **Option B: Using Terminal**
 
@@ -196,12 +204,25 @@ git commit -m "feat: implement adventure dashboard
 - Add loading skeletons and error states
 - Configure environment variables"
 
-git push origin main
+# Push to the current feature branch (created by Spec Kit)
+git push
+
+# Create PR using GitHub CLI
+gh pr create --title "feat: implement adventure dashboard" --body "Implements adventure dashboard with list view, create/delete flows, and API integration."
+
+# Merge PR (after review/approval)
+gh pr merge --squash --delete-branch
 ```
 
 ---
 
 ### Feature 2: Character Management UI
+
+> **⚠️ Before starting:** Make sure you're on the main branch with latest changes:
+>
+> ```bash
+> git checkout main && git pull
+> ```
 
 #### Step 3.2.1 - Specify
 
@@ -261,6 +282,7 @@ Open http://localhost:5173 in your browser and verify:
 2. Stage all changes with `+`
 3. Commit message: `feat: implement character management UI`
 4. Click **Commit** then **Sync Changes**
+5. Create a Pull Request and merge to main
 
 **Option B: Using Terminal**
 
@@ -273,12 +295,25 @@ git commit -m "feat: implement character management UI
 - Display calculated modifiers
 - Create character sheet view"
 
-git push origin main
+# Push to the current feature branch (created by Spec Kit)
+git push
+
+# Create PR using GitHub CLI
+gh pr create --title "feat: implement character management UI" --body "Implements character management with creation form, attribute allocation, and character sheet view."
+
+# Merge PR (after review/approval)
+gh pr merge --squash --delete-branch
 ```
 
 ---
 
 ### Feature 3: Game Interface
+
+> **⚠️ Before starting:** Make sure you're on the main branch with latest changes:
+>
+> ```bash
+> git checkout main && git pull
+> ```
 
 #### Step 3.3.1 - Specify
 
@@ -338,6 +373,7 @@ Open http://localhost:5173 in your browser and verify:
 2. Stage all changes with `+`
 3. Commit message: `feat: implement main game interface`
 4. Click **Commit** then **Sync Changes**
+5. Create a Pull Request and merge to main
 
 **Option B: Using Terminal**
 
@@ -351,12 +387,25 @@ git commit -m "feat: implement main game interface
 - Add combat mode with turn indicators
 - Implement dice roll animations"
 
-git push origin main
+# Push to the current feature branch (created by Spec Kit)
+git push
+
+# Create PR using GitHub CLI
+gh pr create --title "feat: implement main game interface" --body "Implements main game interface with narrative display, command input, status panel, and combat mode."
+
+# Merge PR (after review/approval)
+gh pr merge --squash --delete-branch
 ```
 
 ---
 
 ### Feature 4: Inventory UI
+
+> **⚠️ Before starting:** Make sure you're on the main branch with latest changes:
+>
+> ```bash
+> git checkout main && git pull
+> ```
 
 #### Step 3.4.1 - Specify
 
@@ -416,6 +465,7 @@ Open http://localhost:5173 in your browser and verify:
 2. Stage all changes with `+`
 3. Commit message: `feat: implement inventory UI`
 4. Click **Commit** then **Sync Changes**
+5. Create a Pull Request and merge to main
 
 **Option B: Using Terminal**
 
@@ -429,12 +479,25 @@ git commit -m "feat: implement inventory UI
 - Add equip/unequip functionality
 - Implement sort and filter options"
 
-git push origin main
+# Push to the current feature branch (created by Spec Kit)
+git push
+
+# Create PR using GitHub CLI
+gh pr create --title "feat: implement inventory UI" --body "Implements inventory interface with grid/list view, item details, equipment slots, and filtering."
+
+# Merge PR (after review/approval)
+gh pr merge --squash --delete-branch
 ```
 
 ---
 
 ### Feature 5: Quest Log
+
+> **⚠️ Before starting:** Make sure you're on the main branch with latest changes:
+>
+> ```bash
+> git checkout main && git pull
+> ```
 
 #### Step 3.5.1 - Specify
 
@@ -493,6 +556,7 @@ Open http://localhost:5173 in your browser and verify:
 2. Stage all changes with `+`
 3. Commit message: `feat: implement quest log UI`
 4. Click **Commit** then **Sync Changes**
+5. Create a Pull Request and merge to main
 
 **Option B: Using Terminal**
 
@@ -505,7 +569,14 @@ git commit -m "feat: implement quest log UI
 - Create progress indicators
 - Add completed quests history"
 
-git push origin main
+# Push to the current feature branch (created by Spec Kit)
+git push
+
+# Create PR using GitHub CLI
+gh pr create --title "feat: implement quest log UI" --body "Implements quest log with list view, details, progress indicators, and history."
+
+# Merge PR (after review/approval)
+gh pr merge --squash --delete-branch
 ```
 
 ---

@@ -2,13 +2,13 @@
 
 Welcome to the Text Adventure Game development challenge! These labs guide you through building a complete text adventure game using **GitHub Spec Kit** for Spec-Driven Development.
 
-## �️ Required Tools
+## Required Tools
 
 - **Visual Studio Code** - Your development environment
 - **GitHub Copilot** - AI assistant extension for VS Code
 - **GitHub Spec Kit CLI** - Spec-Driven Development toolkit
 
-## �📚 Labs Overview
+## 📚 Labs Overview
 
 | Lab                                     | Name                                | Description                                  | Duration    |
 | --------------------------------------- | ----------------------------------- | -------------------------------------------- | ----------- |

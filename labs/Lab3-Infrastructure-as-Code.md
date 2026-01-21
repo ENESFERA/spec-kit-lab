@@ -140,6 +140,12 @@ For each infrastructure component, follow the complete Spec Kit workflow:
 
 ### Module 1: Core Infrastructure
 
+> **⚠️ Before starting:** Make sure you're on the main branch with latest changes:
+>
+> ```bash
+> git checkout main && git pull
+> ```
+
 #### Step 4.1.1 - Specify
 
 ```
@@ -198,7 +204,9 @@ az resource list --resource-group adventure-game-dev-rg --output table
 3. Click `+` next to each file (or `+` on "Changes" header to stage all)
 4. Enter commit message: `infra: implement core Azure infrastructure`
 5. Click **Commit** button (checkmark icon)
-6. Click **Sync Changes** or **Push** in the status bar
+6. Click **Sync Changes** to push to the current branch
+7. Click **Create Pull Request** in the Source Control panel (or use GitHub extension)
+8. Review and merge the PR on GitHub, then pull main locally
 
 **Option B: Using Terminal**
 
@@ -211,12 +219,25 @@ git commit -m "infra: implement core Azure infrastructure
 - Configure Network Security Groups
 - Set up Terraform state backend"
 
-git push origin main
+# Push to the current feature branch (created by Spec Kit)
+git push
+
+# Create PR using GitHub CLI
+gh pr create --title "infra: implement core Azure infrastructure" --body "Implements core Azure infrastructure with Resource Group, VNet, subnets, and NSGs."
+
+# Merge PR (after review/approval)
+gh pr merge --squash --delete-branch
 ```
 
 ---
 
 ### Module 2: Security Infrastructure
+
+> **⚠️ Before starting:** Make sure you're on the main branch with latest changes:
+>
+> ```bash
+> git checkout main && git pull
+> ```
 
 #### Step 4.2.1 - Specify
 
@@ -273,6 +294,7 @@ az keyvault show --name adventure-kv-dev --resource-group adventure-game-dev-rg
 2. Stage all changes with `+`
 3. Commit message: `infra: implement security infrastructure`
 4. Click **Commit** then **Sync Changes**
+5. Create a Pull Request and merge to main
 
 **Option B: Using Terminal**
 
@@ -285,12 +307,25 @@ git commit -m "infra: implement security infrastructure
 - Set up diagnostic settings for logging
 - Implement private endpoints (optional)"
 
-git push origin main
+# Push to the current feature branch (created by Spec Kit)
+git push
+
+# Create PR using GitHub CLI
+gh pr create --title "infra: implement security infrastructure" --body "Implements security infrastructure with Key Vault, Managed Identities, and diagnostic settings."
+
+# Merge PR (after review/approval)
+gh pr merge --squash --delete-branch
 ```
 
 ---
 
 ### Module 3: Backend Infrastructure
+
+> **⚠️ Before starting:** Make sure you're on the main branch with latest changes:
+>
+> ```bash
+> git checkout main && git pull
+> ```
 
 #### Step 4.3.1 - Specify
 
@@ -352,6 +387,7 @@ az postgres flexible-server show --name adventure-db-dev --resource-group advent
 2. Stage all changes with `+`
 3. Commit message: `infra: implement backend infrastructure`
 4. Click **Commit** then **Sync Changes**
+5. Create a Pull Request and merge to main
 
 **Option B: Using Terminal**
 
@@ -365,12 +401,25 @@ git commit -m "infra: implement backend infrastructure
 - Configure Application Insights
 - Set up managed identity"
 
-git push origin main
+# Push to the current feature branch (created by Spec Kit)
+git push
+
+# Create PR using GitHub CLI
+gh pr create --title "infra: implement backend infrastructure" --body "Implements backend infrastructure with App Service, PostgreSQL, Key Vault secrets, and Application Insights."
+
+# Merge PR (after review/approval)
+gh pr merge --squash --delete-branch
 ```
 
 ---
 
 ### Module 4: Frontend Infrastructure
+
+> **⚠️ Before starting:** Make sure you're on the main branch with latest changes:
+>
+> ```bash
+> git checkout main && git pull
+> ```
 
 #### Step 4.4.1 - Specify
 
@@ -427,6 +476,7 @@ terraform output static_web_app_url
 2. Stage all changes with `+`
 3. Commit message: `infra: implement frontend infrastructure`
 4. Click **Commit** then **Sync Changes**
+5. Create a Pull Request and merge to main
 
 **Option B: Using Terminal**
 
@@ -439,12 +489,25 @@ git commit -m "infra: implement frontend infrastructure
 - Set up staging environment
 - Add CDN profile (optional)"
 
-git push origin main
+# Push to the current feature branch (created by Spec Kit)
+git push
+
+# Create PR using GitHub CLI
+gh pr create --title "infra: implement frontend infrastructure" --body "Implements frontend infrastructure with Azure Static Web App, environment config, and staging."
+
+# Merge PR (after review/approval)
+gh pr merge --squash --delete-branch
 ```
 
 ---
 
 ### Module 5: CI/CD Infrastructure (Optional)
+
+> **⚠️ Before starting:** Make sure you're on the main branch with latest changes:
+>
+> ```bash
+> git checkout main && git pull
+> ```
 
 #### Step 4.5.1 - Specify
 
@@ -500,6 +563,7 @@ az ad sp list --display-name adventure-game-github-sp --output table
 2. Stage all changes with `+`
 3. Commit message: `infra: implement CI/CD infrastructure`
 4. Click **Commit** then **Sync Changes**
+5. Create a Pull Request and merge to main
 
 **Option B: Using Terminal**
 
@@ -512,7 +576,14 @@ git commit -m "infra: implement CI/CD infrastructure
 - Document required GitHub secrets
 - Generate deployment tokens"
 
-git push origin main
+# Push to the current feature branch (created by Spec Kit)
+git push
+
+# Create PR using GitHub CLI
+gh pr create --title "infra: implement CI/CD infrastructure" --body "Implements CI/CD infrastructure with Service Principal, role assignments, and GitHub Actions setup."
+
+# Merge PR (after review/approval)
+gh pr merge --squash --delete-branch
 ```
 
 ---

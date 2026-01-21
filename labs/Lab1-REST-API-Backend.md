@@ -54,10 +54,8 @@ Create a new Spec Kit project for the adventure game API:
 
 ```bash
 # Initialize with GitHub Copilot
-specify init adventure-api --ai copilot
+specify init . --ai copilot
 
-# Navigate to your project
-cd adventure-api
 ```
 
 This creates:
@@ -124,6 +122,12 @@ For each feature, follow the complete Spec Kit workflow:
 ---
 
 ### Feature 1: Dice System
+
+> **⚠️ Before starting:** Make sure you're on the main branch with latest changes:
+>
+> ```bash
+> git checkout main && git pull
+> ```
 
 #### Step 4.1.1 - Specify
 
@@ -197,7 +201,9 @@ curl -X POST http://localhost:3000/api/dice/roll \
 3. Click `+` next to each file (or `+` on "Changes" header to stage all)
 4. Enter commit message: `feat: implement dice rolling system`
 5. Click **Commit** button (checkmark icon)
-6. Click **Sync Changes** or **Push** in the status bar
+6. Click **Sync Changes** to push to the current branch
+7. Click **Create Pull Request** in the Source Control panel (or use GitHub extension)
+8. Review and merge the PR on GitHub, then pull main locally
 
 **Option B: Using Terminal**
 
@@ -210,12 +216,25 @@ git commit -m "feat: implement dice rolling system
 - Add cryptographically secure random generation
 - Include unit tests for dice mechanics"
 
-git push origin main
+# Push to the current feature branch (created by Spec Kit)
+git push
+
+# Create PR using GitHub CLI
+gh pr create --title "feat: implement dice rolling system" --body "Implements the dice rolling engine with notation parser, advantage/disadvantage, and secure RNG."
+
+# Merge PR (after review/approval)
+gh pr merge --squash --delete-branch
 ```
 
 ---
 
 ### Feature 2: Adventure System
+
+> **⚠️ Before starting:** Make sure you're on the main branch with latest changes:
+>
+> ```bash
+> git checkout main && git pull
+> ```
 
 #### Step 4.2.1 - Specify
 
@@ -271,6 +290,7 @@ curl -X GET http://localhost:3000/api/adventures
 2. Stage all changes with `+`
 3. Commit message: `feat: implement adventure system`
 4. Click **Commit** then **Sync Changes**
+5. Create a Pull Request and merge to main
 
 **Option B: Using Terminal**
 
@@ -283,12 +303,25 @@ git commit -m "feat: implement adventure system
 - Add game state persistence
 - Generate OpenAPI documentation"
 
-git push origin main
+# Push to the current feature branch (created by Spec Kit)
+git push
+
+# Create PR using GitHub CLI
+gh pr create --title "feat: implement adventure system" --body "Implements adventure initialization with CRUD operations, scene management, and state persistence."
+
+# Merge PR (after review/approval)
+gh pr merge --squash --delete-branch
 ```
 
 ---
 
 ### Feature 3: Character Management
+
+> **⚠️ Before starting:** Make sure you're on the main branch with latest changes:
+>
+> ```bash
+> git checkout main && git pull
+> ```
 
 #### Step 4.3.1 - Specify
 
@@ -346,6 +379,7 @@ curl -X POST http://localhost:3000/api/adventures/{adventureId}/characters \
 2. Stage all changes with `+`
 3. Commit message: `feat: implement character management system`
 4. Click **Commit** then **Sync Changes**
+5. Create a Pull Request and merge to main
 
 **Option B: Using Terminal**
 
@@ -358,12 +392,25 @@ git commit -m "feat: implement character management system
 - Add character versioning/snapshots
 - Link characters to adventures"
 
-git push origin main
+# Push to the current feature branch (created by Spec Kit)
+git push
+
+# Create PR using GitHub CLI
+gh pr create --title "feat: implement character management system" --body "Implements character management with attributes, modifiers, versioning, and adventure linking."
+
+# Merge PR (after review/approval)
+gh pr merge --squash --delete-branch
 ```
 
 ---
 
 ### Feature 4: Inventory System
+
+> **⚠️ Before starting:** Make sure you're on the main branch with latest changes:
+>
+> ```bash
+> git checkout main && git pull
+> ```
 
 #### Step 4.4.1 - Specify
 
@@ -426,6 +473,7 @@ curl -X POST http://localhost:3000/api/characters/{characterId}/equip \
 2. Stage all changes with `+`
 3. Commit message: `feat: implement inventory system`
 4. Click **Commit** then **Sync Changes**
+5. Create a Pull Request and merge to main
 
 **Option B: Using Terminal**
 
@@ -438,12 +486,25 @@ git commit -m "feat: implement inventory system
 - Add stackable/unique item logic
 - Create loot tables with dice integration"
 
-git push origin main
+# Push to the current feature branch (created by Spec Kit)
+git push
+
+# Create PR using GitHub CLI
+gh pr create --title "feat: implement inventory system" --body "Implements inventory with items, equipment slots, stacking logic, and loot tables."
+
+# Merge PR (after review/approval)
+gh pr merge --squash --delete-branch
 ```
 
 ---
 
 ### Feature 5: Combat System
+
+> **⚠️ Before starting:** Make sure you're on the main branch with latest changes:
+>
+> ```bash
+> git checkout main && git pull
+> ```
 
 #### Step 4.5.1 - Specify
 
@@ -507,6 +568,7 @@ curl -X POST http://localhost:3000/api/adventures/{adventureId}/combat/turn \
 2. Stage all changes with `+`
 3. Commit message: `feat: implement turn-based combat system`
 4. Click **Commit** then **Sync Changes**
+5. Create a Pull Request and merge to main
 
 **Option B: Using Terminal**
 
@@ -519,12 +581,25 @@ git commit -m "feat: implement turn-based combat system
 - Add attack rolls and damage calculation
 - Create combat resolver with turn management"
 
-git push origin main
+# Push to the current feature branch (created by Spec Kit)
+git push
+
+# Create PR using GitHub CLI
+gh pr create --title "feat: implement turn-based combat system" --body "Implements turn-based combat with NPCs, AI states, initiative, and damage calculations."
+
+# Merge PR (after review/approval)
+gh pr merge --squash --delete-branch
 ```
 
 ---
 
 ### Feature 6: Quest System
+
+> **⚠️ Before starting:** Make sure you're on the main branch with latest changes:
+>
+> ```bash
+> git checkout main && git pull
+> ```
 
 #### Step 4.6.1 - Specify
 
@@ -584,6 +659,7 @@ curl -X POST http://localhost:3000/api/adventures/{adventureId}/quests/{questId}
 2. Stage all changes with `+`
 3. Commit message: `feat: implement quest system`
 4. Click **Commit** then **Sync Changes**
+5. Create a Pull Request and merge to main
 
 **Option B: Using Terminal**
 
@@ -596,7 +672,14 @@ git commit -m "feat: implement quest system
 - Add quest dependencies graph
 - Integrate rewards with inventory system"
 
-git push origin main
+# Push to the current feature branch (created by Spec Kit)
+git push
+
+# Create PR using GitHub CLI
+gh pr create --title "feat: implement quest system" --body "Implements multi-stage quest system with progress tracking, dependencies, and rewards."
+
+# Merge PR (after review/approval)
+gh pr merge --squash --delete-branch
 ```
 
 ---
