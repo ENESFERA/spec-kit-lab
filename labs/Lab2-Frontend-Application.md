@@ -156,18 +156,21 @@ All `/speckit.*` commands are executed through the **GitHub Copilot Chat panel**
 
 ---
 
-## Step 3: Establish Project Constitution
+## Step 3: Extend the Project Constitution
 
-Define the guiding principles for your frontend:
+The project already has API-focused principles from Lab 1. Now extend the constitution with frontend-specific guidelines:
 
 ```
-/speckit.constitution Create principles for a text adventure frontend:
+/speckit.constitution Extend the existing principles with frontend-specific guidelines:
 - Accessibility: Interface must be keyboard navigable and screen-reader friendly
 - Simplicity: Focus on functionality over visual complexity
 - Responsiveness: Interface must work on mobile and desktop
 - Error handling: All API errors must be displayed gracefully to users
+- Type safety: Use generated API types for all backend communication
 - Documentation: All components and functions must be documented
 ```
+
+> **📝 Note:** This extends the constitution created in Lab 1, which already includes principles for RESTful design, OpenAPI documentation, testability, simplicity, and performance. The combined principles guide both backend and frontend development.
 
 ---
 

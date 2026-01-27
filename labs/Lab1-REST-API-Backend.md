@@ -59,9 +59,6 @@ mkdir text-adventure && cd text-adventure
 # Initialize with GitHub Copilot
 specify init . --ai copilot
 
-# Create monorepo structure
-mkdir -p packages/api
-cd packages/api
 ```
 
 This creates:
